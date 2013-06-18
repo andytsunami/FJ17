@@ -3,25 +3,25 @@ package br.com.caelum.fj17;
 import java.util.HashMap;
 
 public class BalancoEmpresa {
+	private HashMap<String, Divida> dividas = new HashMap<String, Divida>();
 
-	private HashMap<String, Divida> dividas = new HashMap<>();
-
-	public void registraDivida(String nome, String cnpj, double valor) {
+	public void registraDivida(String credor, String cnpjCredor, double valor) {
 		Divida divida = new Divida();
-
-		divida.setCnpj(cnpj);
-		divida.setNomeCredor(nome);
 		divida.setTotal(valor);
-
-		dividas.put(cnpj, divida);
+		divida.setCredor(credor);
+		divida.setCnpjCredor(cnpjCredor);
+		dividas.put(cnpjCredor, divida);
 	}
 
-	public void pagaDivida(String cnpj, double valor) {
-		Divida divida = this.dividas.get(cnpj);
-
+	public void pagaDivida(String cnpjCredor, double valor, String nomePagador,
+			String cnpjPagador) {
+		Divida divida = dividas.get(cnpjCredor);
 		if (divida != null) {
-			divida.paga(valor);
+			Pagamento pagamento = new Pagamento();
+			pagamento.setCnpjPagador(cnpjPagador);
+			pagamento.setPagador(nomePagador);
+			pagamento.setValor(valor);
+			divida.registra(pagamento);
 		}
-
 	}
 }
