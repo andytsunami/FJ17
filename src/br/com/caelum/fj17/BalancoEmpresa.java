@@ -2,10 +2,12 @@ package br.com.caelum.fj17;
 
 import java.util.HashMap;
 
-public class BalancoEmpresa {
-	private HashMap<String, Divida> dividas = new HashMap<String, Divida>();
+import br.com.caelum.fj17.util.Cnpj;
 
-	public void registraDivida(String credor, String cnpjCredor, double valor) {
+public class BalancoEmpresa {
+	private HashMap<Cnpj, Divida> dividas = new HashMap<Cnpj, Divida>();
+
+	public void registraDivida(String credor, Cnpj cnpjCredor, double valor) {
 		Divida divida = new Divida();
 		divida.setTotal(valor);
 		divida.setCredor(credor);

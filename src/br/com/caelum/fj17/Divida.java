@@ -3,19 +3,16 @@ package br.com.caelum.fj17;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import br.com.caelum.fj17.util.Cnpj;
+
 public class Divida {
 	private double total;
 	private double valorPago;
 	private String credor;
-	private String cnpjCredor;
+	private Cnpj cnpjCredor;
 	private ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
 
-	public boolean cnpjValido() {
-		return primeiroDigitoVerificadorDoCnpj() == primeiroDigitoCorretoParaCnpj()
-				&& segundoDigitoVerificadorDoCnpj() == segundoDigitoCorretoParaCnpj();
-	}
-
-	public String getCnpjCredor() {
+	public Cnpj getCnpjCredor() {
 		return this.cnpjCredor;
 	}
 
@@ -71,36 +68,12 @@ public class Divida {
 		return pagamentosFiltrados;
 	}
 
-	private int primeiroDigitoCorretoParaCnpj() {
-		// Calcula o primeiro dígito verificador correto para
-		// o CNPJ armazenado no atributo valor
-		return 0;
-	}
-
-	private int primeiroDigitoVerificadorDoCnpj() {
-		// Extrai o primeiro dígito verificador do CNPJ armazenado
-		// no atributo valor
-		return 0;
-	}
-
 	public void registra(Pagamento pagamento) {
 		this.pagamentos.add(pagamento);
 		paga(pagamento.getValor());
 	}
 
-	private int segundoDigitoCorretoParaCnpj() {
-		// Calcula o segundo dígito verificador correto para
-		// o CNPJ armazenado no atributo valor
-		return 0;
-	}
-
-	private int segundoDigitoVerificadorDoCnpj() {
-		// Extrai o segundo dígito verificador do CNPJ armazenado
-		// no atributo valor
-		return 0;
-	}
-
-	public void setCnpjCredor(String cnpjCredor) {
+	public void setCnpjCredor(Cnpj cnpjCredor) {
 		this.cnpjCredor = cnpjCredor;
 	}
 
