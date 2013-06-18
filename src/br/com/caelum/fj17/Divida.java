@@ -1,8 +1,5 @@
 package br.com.caelum.fj17;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
 import br.com.caelum.fj17.util.Cnpj;
 
 public class Divida {
@@ -10,7 +7,7 @@ public class Divida {
 	private double valorPago;
 	private String credor;
 	private Cnpj cnpjCredor;
-	private ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
+	private Pagamentos pagamentos;
 
 	public Cnpj getCnpjCredor() {
 		return this.cnpjCredor;
@@ -36,36 +33,6 @@ public class Divida {
 			valor = valor - 8;
 		}
 		this.valorPago += valor;
-	}
-
-	public ArrayList<Pagamento> pagamentosAntesDe(Calendar data) {
-		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this.pagamentos) {
-			if (pagamento.getData().before(data)) {
-				pagamentosFiltrados.add(pagamento);
-			}
-		}
-		return pagamentosFiltrados;
-	}
-
-	public ArrayList<Pagamento> pagamentosComValorMaiorQue(double valorMinimo) {
-		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this.pagamentos) {
-			if (pagamento.getValor() > valorMinimo) {
-				pagamentosFiltrados.add(pagamento);
-			}
-		}
-		return pagamentosFiltrados;
-	}
-
-	public ArrayList<Pagamento> pagamentosDo(String cnpjPagador) {
-		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this.pagamentos) {
-			if (pagamento.getCnpjPagador().equals(cnpjPagador)) {
-				pagamentosFiltrados.add(pagamento);
-			}
-		}
-		return pagamentosFiltrados;
 	}
 
 	public void registra(Pagamento pagamento) {
