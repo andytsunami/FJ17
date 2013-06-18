@@ -9,6 +9,7 @@ public class Pagamentos extends ArrayList<Pagamento> {
 	 * 
 	 */
 	private static final long serialVersionUID = -8659932693598110287L;
+	private double valorPago;
 
 	public ArrayList<Pagamento> pagamentosAntesDe(Calendar data) {
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
@@ -38,6 +39,22 @@ public class Pagamentos extends ArrayList<Pagamento> {
 			}
 		}
 		return pagamentosFiltrados;
+	}
+
+	public double getValorPago() {
+		return this.valorPago;
+	}
+
+	public void registra(Pagamento pagamento) {
+		double valor = pagamento.getValor();
+		if (valor < 0) {
+			throw new IllegalArgumentException("Valor invalido para pagamento");
+		}
+		if (valor > 100) {
+			valor = valor - 8;
+		}
+		this.valorPago += valor;
+
 	}
 
 }

@@ -21,10 +21,6 @@ public class Divida {
 		return this.total;
 	}
 
-	public double getValorPago() {
-		return this.valorPago;
-	}
-
 	private void paga(double valor) {
 		if (valor < 0) {
 			throw new IllegalArgumentException("Valor invalido para pagamento");
@@ -33,11 +29,6 @@ public class Divida {
 			valor = valor - 8;
 		}
 		this.valorPago += valor;
-	}
-
-	public void registra(Pagamento pagamento) {
-		this.pagamentos.add(pagamento);
-		paga(pagamento.getValor());
 	}
 
 	public void setCnpjCredor(Cnpj cnpjCredor) {
@@ -54,5 +45,13 @@ public class Divida {
 
 	public double valorAPagar() {
 		return this.total - this.valorPago;
+	}
+
+	public Pagamentos getPagamentos() {
+		return pagamentos;
+	}
+
+	public void setPagamentos(Pagamentos pagamentos) {
+		this.pagamentos = pagamentos;
 	}
 }
