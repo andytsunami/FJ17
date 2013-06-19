@@ -21,7 +21,11 @@ public class RelatorioDeDivida {
 		Divida divida = new Divida();
 		divida.setCnpjCredor(new Cnpj("123456"));
 		divida.setCredor("Uma empresa");
-		divida.setTotal(200);
+		divida.setTotal(2000);
+
+		Pagamento pagamento = new Pagamento();
+		pagamento.setValor(100);
+		divida.registra(pagamento);
 
 		// Formato Moeda
 		NumberFormat formatoBr = NumberFormat.getCurrencyInstance(new Locale(

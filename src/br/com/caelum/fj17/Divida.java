@@ -7,7 +7,7 @@ public class Divida {
 	private double valorPago;
 	private String credor;
 	private Cnpj cnpjCredor;
-	private Pagamentos pagamentos;
+	private Pagamentos pagamentos = new Pagamentos();
 
 	public Cnpj getCnpjCredor() {
 		return this.cnpjCredor;
@@ -25,6 +25,7 @@ public class Divida {
 		return this.total;
 	}
 
+	@SuppressWarnings("unused")
 	private void paga(double valor) {
 		if (valor < 0) {
 			throw new IllegalArgumentException("Valor invalido para pagamento");
