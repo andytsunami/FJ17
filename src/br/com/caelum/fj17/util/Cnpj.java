@@ -8,6 +8,18 @@ public class Cnpj {
 		this.valor = cnpj;
 	}
 
+	public boolean equals(Object object) {
+		if (!(object instanceof Cnpj)) {
+			return false;
+		}
+		Cnpj outro = (Cnpj) object;
+		return this.valor.equals(outro.valor);
+	}
+
+	public int hashCode() {
+		return this.valor.hashCode();
+	}
+
 	public boolean ehValido() {
 		return primeiroDigitoVerificadorDoCnpj() == primeiroDigitoCorretoParaCnpj()
 				&& segundoDigitoVerificadorDoCnpj() == segundoDigitoCorretoParaCnpj();
