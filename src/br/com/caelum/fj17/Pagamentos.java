@@ -3,17 +3,15 @@ package br.com.caelum.fj17;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Pagamentos extends ArrayList<Pagamento> {
+public class Pagamentos {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8659932693598110287L;
+	private ArrayList<Pagamento> pagamentos = new ArrayList<>();
+
 	private double valorPago;
 
 	public ArrayList<Pagamento> pagamentosAntesDe(Calendar data) {
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if (pagamento.getData().before(data)) {
 				pagamentosFiltrados.add(pagamento);
 			}
@@ -23,7 +21,7 @@ public class Pagamentos extends ArrayList<Pagamento> {
 
 	public ArrayList<Pagamento> pagamentosComValorMaiorQue(double valorMinimo) {
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if (pagamento.getValor() > valorMinimo) {
 				pagamentosFiltrados.add(pagamento);
 			}
@@ -33,7 +31,7 @@ public class Pagamentos extends ArrayList<Pagamento> {
 
 	public ArrayList<Pagamento> pagamentosDo(String cnpjPagador) {
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if (pagamento.getCnpjPagador().equals(cnpjPagador)) {
 				pagamentosFiltrados.add(pagamento);
 			}
